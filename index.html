@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #880e4f;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-top: 50px;
+        }
+        button {
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ad1457;
+       }
+        #image {
+            width: 100%;  /* Dopasowanie szerokości obrazu do szerokości strony */
+            max-width: 600px;  /* Maksymalna szerokość obrazu */
+            margin-top: 20px;  /* Odstęp od tekstu */
+        } 
+
+          }
+    </style>
+</head>
+<body>
+
+    <h1 id="question">Will you be my Valentine?</h1>
+    
+    <img id="image" src="images/valentine.jpg" alt="Valentine's Image">
+
+
+    <div id="buttons">
+        <button onclick="respond('yes')">Yes</button>
+        <button onclick="respond('no')">No</button>
+    </div>
+
+    <!-- Osadzony odtwarzacz audio -->
+    <audio id="song" autoplay loop>
+        <source src="music/Fell_In_Luv.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Funkcja do zmiany muzyki
+        function playSong(songFile) {
+            const audioPlayer = document.getElementById('song');
+            audioPlayer.src = songFile;
+            audioPlayer.play();
+        }
+
+        // Reakcja na kliknięcie
+        function respond(answer) {
+            const question = document.getElementById('question');
+            const buttons = document.getElementById('buttons');
+
+            if (answer === 'yes') {
+                question.textContent = "yeah, I need you Like oxygen, without you, baby girl, I can't breathe";
+                buttons.innerHTML = "";  // Usunięcie przycisków
+                playSong('music/I_NEED_U.mp3');  // Odtwarzanie "I Need U"
+            } else {
+                question.textContent = "I can't believe we made it this far";
+                buttons.innerHTML = '<button onclick="respond(\'yes\')">Yes</button>';  // Tylko Yes
+                playSong('music/24_SONGS.mp3');  // Odtwarzanie "24 Songs"
+            }
+        }
+    </script>
+
+</body>
+</html>
